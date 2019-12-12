@@ -4,7 +4,7 @@ def project_path = '/var/lib/docker/volumes/jenkins-data/_data/workspace/' + pro
 def proj = 'AirPollution'
 def dockerfilepath = 'AirPollution'
 def shortpath = '/app'
-def project_workspace = '/app/' + proj
+def project_workspace = '/app'
 def docker_name = 'airpollution-'+proj.toLowerCase()+':v0.${BUILD_NUMBER}'
 def dependencies = []
 
