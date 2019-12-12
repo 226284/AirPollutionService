@@ -1,16 +1,15 @@
-def project_name = 'epicalgorithmservice'
-def path_to_project = '/Services'
+def project_name = 'airpollution'
 def project_path = '/var/lib/docker/volumes/jenkins-data/_data/workspace/' + project_name + '_' + env.BRANCH_NAME
 
-def proj = 'AlgorithmService'
-def dockerfilepath = 'Services/AlgorithmService'
+def proj = 'AirPollution'
+def dockerfilepath = 'AirPollution'
 def shortpath = '/app'
-def project_workspace = '/app/Services/' + proj
-def docker_name = 'epicproject-'+proj.toLowerCase()+':v0.${BUILD_NUMBER}'
+def project_workspace = '/app/' + proj
+def docker_name = 'airpollution-'+proj.toLowerCase()+':v0.${BUILD_NUMBER}'
 def dependencies = []
 
-def hostport = 5014
-def dockervolume = 'algorithmservice'
+def hostport = 5050
+def dockervolume = 'airpollution'
 
 pipeline {
     agent any 

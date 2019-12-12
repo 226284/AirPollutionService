@@ -58,7 +58,7 @@ namespace AirPollution
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            }); 
 
             var provider = app.ApplicationServices;
             provider.UseScheduler(scheduler =>
