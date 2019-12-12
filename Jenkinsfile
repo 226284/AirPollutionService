@@ -1,4 +1,4 @@
-def project_name = 'airpollution'
+def project_name = 'AirPollutionService'
 def project_path = '/var/lib/docker/volumes/jenkins-data/_data/workspace/' + project_name + '_' + env.BRANCH_NAME
 
 def proj = 'AirPollution'
