@@ -17,7 +17,7 @@ pipeline {
         stage('Restore Dependecies') {
             steps {
                 script {
-                    sh 'docker container run --rm -i -v ' + project_path + ':' + shortpath + ' -w ' + project_workspace + ' microsoft/dotnet dotnet restore --source http://83.238.160.91:5998/ --source https://api.nuget.org/v3/index.json'
+                    sh 'docker container run --rm -i -v ' + project_path + ':' + shortpath + ' -w ' + project_workspace + ' mcr.microsoft.com/dotnet/core/sdk:3.0 dotnet restore --source http://83.238.160.91:5998/ --source https://api.nuget.org/v3/index.json'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     sh 'rm -rf app'
-                    sh 'docker container run --rm -i -v ' + project_path + ':' + shortpath + ' -w ' + project_workspace + ' microsoft/dotnet dotnet build --source http://83.238.160.91:5998/ --source https://api.nuget.org/v3/index.json'
+                    sh 'docker container run --rm -i -v ' + project_path + ':' + shortpath + ' -w ' + project_workspace + ' mcr.microsoft.com/dotnet/core/sdk:3.0 dotnet build --source http://83.238.160.91:5998/ --source https://api.nuget.org/v3/index.json'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage ('Publish') {
             steps {
                 script {
-                    sh 'docker container run --rm -i -v ' + project_path + ':' + shortpath + ' -w ' + project_workspace + ' microsoft/dotnet dotnet publish -c Release -o out --source http://83.238.160.91:5998/ --source https://api.nuget.org/v3/index.json'
+                    sh 'docker container run --rm -i -v ' + project_path + ':' + shortpath + ' -w ' + project_workspace + ' mcr.microsoft.com/dotnet/core/sdk:3.0 dotnet publish -c Release -o out --source http://83.238.160.91:5998/ --source https://api.nuget.org/v3/index.json'
                 }
              }
         }
