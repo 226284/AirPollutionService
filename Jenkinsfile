@@ -41,9 +41,7 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 script {
-                    dir(dockerfilepath) {
-                        sh 'docker build . -t ' + docker_name
-                    }
+                    sh 'docker build . -t ' + docker_name
                     
                     sh 'docker tag ' + docker_name + ' localhost:5999/' + docker_name
                     sh 'docker push localhost:5999/' + docker_name
