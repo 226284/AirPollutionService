@@ -5,7 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace AirPollution.Models
-{
+{   
+    /// <summary>
+    /// Pollution Data Model
+    /// </summary>
     public class PollutionData
     {
         [Key]
