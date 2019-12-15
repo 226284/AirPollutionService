@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace AirPollution
 {
@@ -31,6 +32,8 @@ namespace AirPollution
         {
             services.AddControllers();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddDbContext<AirPollutionContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -38,7 +41,9 @@ namespace AirPollution
 
             services.AddScheduler();
 
-            services.AddTransient<GetPollutionData>();
+            //services.AddTransient<GetPollutionData>();
+
+            services.AddTransient<GetAllStations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,8 +68,9 @@ namespace AirPollution
             var provider = app.ApplicationServices;
             provider.UseScheduler(scheduler =>
             {
-                scheduler.Schedule<GetPollutionData>()
-                    .Hourly();
+                //scheduler.Schedule<GetPollutionData>().Hourly();
+
+                scheduler.Schedule<GetAllStations>().Weekly();
             });
         }
     }

@@ -17,6 +17,7 @@ namespace AirPollution.Services
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly AirPollutionContext _AirPollutionContext;
+
         public bool GetPollutionDataError { get; private set; }
 
         public GetPollutionData(IHttpClientFactory clientFactory, AirPollutionContext AirPollutionContext)

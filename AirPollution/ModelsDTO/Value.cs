@@ -10,3 +10,4 @@ namespace AirPollution.ModelsDTO
         public string date { get; set; }
         public double value { get; set; }
     }
+}
