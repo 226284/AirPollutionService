@@ -13,7 +13,7 @@ namespace AirPollution.Models
         public DateTime DateAdded { get; set; }
         public double Value { get; set; }
 
-        ]public int StationId { get; set; }
+        public int StationId { get; set; }
         public Station Station { get; set; }
     }
 }

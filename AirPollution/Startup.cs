@@ -44,6 +44,7 @@ namespace AirPollution
             //services.AddTransient<GetPollutionData>();
 
             services.AddTransient<GetAllStations>();
+            services.AddTransient<GetAllSensors>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +71,8 @@ namespace AirPollution
             {
                 //scheduler.Schedule<GetPollutionData>().Hourly();
 
-                scheduler.Schedule<GetAllStations>().Weekly();
+                scheduler.Schedule<GetAllStations>().EveryTenSeconds();
+                scheduler.Schedule<GetAllSensors>().EveryTenSeconds();
             });
         }
     }

@@ -21,7 +21,7 @@ namespace AirPollution.AutoMapping
             CreateMap<SensorDTO, Sensor>()
                 .ForMember(x => x.Id, opt => opt.MapFrom(x => x.id))
                 .ForMember(x => x.Name, opt => opt.MapFrom(x => x.param.paramCode))
-                .ForMember(x => x.Station.Id, opt => opt.MapFrom(x => x.stationId));
+                .ForMember(x => x.StationId, opt => opt.MapFrom(x => x.stationId));
         }
     }
 }

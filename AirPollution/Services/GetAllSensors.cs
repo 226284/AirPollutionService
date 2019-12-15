@@ -2,6 +2,7 @@
 using AirPollution.Models;
 using AirPollution.ModelsDTO;
 using AutoMapper;
+using Coravel.Invocable;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AirPollution.Services
 {
-    public class GetAllSensors
+    public class GetAllSensors: IInvocable
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly AirPollutionContext _AirPollutionContext;
@@ -59,6 +60,16 @@ namespace AirPollution.Services
             else
             {
                 Console.WriteLine($"StatusCode: {response.StatusCode}");
+            }
+        }
+
+        public async Task Invoke()
+        {
+            var stations =  _AirPollutionContext.Stations.ToList();
+
+            foreach (var s in stations)
+            {
+                await GetSensorsFromStation(s.Id);
             }
         }
     }
